@@ -32,6 +32,10 @@
 	margin: 32px 0 16px 0;
 }
 
+.introScreenTitle > img {
+	height: 28px;
+}
+
 .incomeForm {
 	white-space: nowrap;
 	margin-top: auto;

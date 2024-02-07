@@ -122,7 +122,9 @@ function IntroScreen({ startSimulation }: { startSimulation: Function }) {
   return (
     <div className={styles.introScreen}>
       <div className={styles.introScreenContent}>
-        <div className={styles.introScreenTitle}>Realtime Worth Jar</div>
+        <div className={styles.introScreenTitle}>
+          Realtime Worth Jar <img src={jarImgSrc} alt=''></img>
+        </div>
         <p>
           When you’re sitting through yet another meeting, have you ever
           wondered
