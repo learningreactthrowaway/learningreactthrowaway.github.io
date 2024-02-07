@@ -1,0 +1,194 @@
+@font-face { font-family: Nunito; src: url('Nunito-Regular.ttf'); } 
+@font-face { font-family: PaytoneOne; src: url('PaytoneOne-Regular.ttf'); } 
+
+.body {
+	--text-color: rgb(83, 84, 78);
+	font-family: 'Nunito', sans-serif;
+	margin: 0 auto;
+}
+
+.introScreen {
+	font-size: 24px;
+	background-color: #ededed;
+	position: relative;
+	width: inherit;
+	height: fit-content;
+}
+
+.introScreenContent {
+	padding: 0 16px;
+	display: flex;
+	flex-direction: column;
+	height: fit-content;
+	min-height: 100vh;
+}
+
+.introScreenContent p {
+	margin: 8px 0;
+}
+
+.introScreenTitle {
+	font-size: 36px;
+	margin: 32px 0 16px 0;
+}
+
+.incomeForm {
+	white-space: nowrap;
+	margin-top: auto;
+	padding-top: 64px;
+	font-size: 28px;
+	display: flex;
+	flex-direction: column;
+}
+
+.incomeInputRow {
+	display: flex;
+	width: 100%;
+	margin-top: 8px;
+}
+
+.incomeInput {
+	font-family: 'Nunito', sans-serif;
+	font-size: 28px;
+	width: inherit;
+}
+
+.incomeFormErrorMessage {
+	white-space: normal;
+	font-size: 16px;
+	color: red;
+}
+
+.introScreenStartButton {
+	background-color: #e5e8d8;
+	border-radius: 16px;
+	border-color: var(--text-color);
+	margin: 32px 0;
+	font-family: 'Nunito', sans-serif;
+	font-size: 32px;
+	width: 100%;
+}
+
+.moneyContainer {
+	background-image: url('background.jpg');
+	position: relative;
+	overflow: hidden;
+	width: inherit;
+	height: inherit;
+}
+
+.canvas {
+	width: 100%;
+	height: 100%;
+}
+
+.money {
+	position: absolute;
+}
+
+.moneyContainerOverlay {
+	left: 0;
+	top: 0;
+	position: absolute;
+	width: inherit;
+	height: inherit;
+}
+
+@keyframes rainbowColor {
+  0% { color: rgb(233, 68, 35); }
+	20% { color: rgb(44, 188, 25); }
+	40% { color: rgb(209, 54, 230); }
+	60% { color: rgb(212, 192, 10); }
+	80% { color: rgb(57, 151, 238); }
+	100% { color: rgb(233, 68, 35); }
+}
+
+@keyframes shake {
+	0% { transform: translate(calc(-50% + 1px), calc(-50% + 1px)) rotate(0deg); }
+	10% { transform: translate(calc(-50% - 1px), calc(-50% - 2px)) rotate(-2deg); }
+	20% { transform: translate(calc(-50% - 3px), calc(-50% + 0px)) rotate(2deg); }
+	30% { transform: translate(calc(-50% + 3px), calc(-50% + 2px)) rotate(0deg); }
+	40% { transform: translate(calc(-50% + 1px), calc(-50% - 1px)) rotate(2deg); }
+	50% { transform: translate(calc(-50% - 1px), calc(-50% + 2px)) rotate(-2deg); }
+	60% { transform: translate(calc(-50% - 3px), calc(-50% + 1px)) rotate(0deg); }
+	70% { transform: translate(calc(-50% + 3px), calc(-50% + 1px)) rotate(-2deg); }
+	80% { transform: translate(calc(-50% - 1px), calc(-50% - 1px)) rotate(2deg); }
+	90% { transform: translate(calc(-50% + 1px), calc(-50% + 2px)) rotate(0deg); }
+	100% { transform: translate(calc(-50% + 1px), calc(-50% - 2px)) rotate(-2deg); }
+}
+
+.pennyModeText {
+	color: rgb(233, 68, 35);
+	margin: auto auto;
+	font-family: 'PaytoneOne', sans-serif;
+	font-size: 84px;
+	max-width: 300px;
+	text-align: center;
+	line-height: 120px;
+	left: 50%;
+	top: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	animation: rainbowColor 2s ease-in-out infinite, shake linear 1s infinite;
+}
+
+.pennyModeImage {
+	opacity: 0.5;
+	position: absolute;
+}
+
+@keyframes PennyModeBackgroundAnimation {
+	0%{background-position:0% 2%}
+	50%{background-position:100% 99%}
+	100%{background-position:0% 2%}
+}
+.pennyModeBackground {
+	background: linear-gradient(311deg, rgb(44, 188, 25), rgb(209, 54, 230), rgb(212, 192, 10), rgb(57, 151, 238), rgb(233, 68, 35));
+	background-size: 1000% 1000%;
+	opacity: 0.25;
+	position: absolute;
+	width: inherit;
+	height: inherit;
+	animation: PennyModeBackgroundAnimation 4s ease infinite;
+}
+
+.topRow {
+	font-size: 28px;
+	/* display: flex; */
+	color: var(--text-color);
+	position: absolute;
+	z-index: 1;
+	width: inherit;
+	height: 128px;
+	background: linear-gradient(180deg, rgba(122, 127, 92, 0.25), transparent);
+}
+
+.topRowContent {
+	padding: 8px 16px;
+}
+
+@keyframes affirmationAnimation {
+  0% { opacity: 0; }
+	40% { opacity: .9; }
+	60% { opacity: .9; }
+  100% { opacity: 0; }
+}
+
+.affirmation {
+	color: var(--text-color);
+	margin: auto auto;
+	font-family: 'PaytoneOne', sans-serif;
+	font-size: 64px;
+	max-width: 300px;
+	text-align: center;
+	line-height: 80px;
+	left: 45%;
+	top: 45%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	opacity: 0;
+}
+
+.affirmation.show {
+	animation: affirmationAnimation 5s ease-in-out;
+}
