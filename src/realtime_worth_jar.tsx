@@ -128,15 +128,15 @@ function IntroScreen({ startSimulation }: { startSimulation: Function }) {
         <p>
           When you’re sitting through yet another meeting, have you ever
           wondered
-          <b>“why am I even still here? What am I doing all this for?”</b> Well
-          we’ve got the answer for you!
+          <b> “why am I even still here? What am I doing all this for?”</b>
         </p>
         <p>
-          The <b>Realtime Worth Jar</b> (RWJ) can help!
+          Well we’ve got the answer for you: the <b>Realtime Worth Jar</b>{' '}
+          (RWJ)!
         </p>
         <p>
-          This tool will efficiently remind you in real time of just why you’re
-          still doing this with the only one life that you’ve got!
+          This tool gracefully reminds you in real time of just why you’re still
+          doing this with the only one life that you’ve got!
         </p>
         <div className={styles.incomeForm}>
           <div className={styles.incomeInputRow}>
