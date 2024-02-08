@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.ac174bd7.chunk.css",
-    "main.js": "/static/js/main.5b30449a.chunk.js",
-    "main.js.map": "/static/js/main.5b30449a.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
-    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/js/2.c2f28411.chunk.js": "/static/js/2.c2f28411.chunk.js",
-    "static/js/2.c2f28411.chunk.js.map": "/static/js/2.c2f28411.chunk.js.map",
+    "main.css": "/static/css/main.28b13e28.css",
+    "main.js": "/static/js/main.c21837c2.js",
+    "static/media/catvibe.gif": "/static/media/catvibe.b0deade08c887b9e1476.gif",
+    "static/media/powell.gif": "/static/media/powell.9cb30c50810a68a24a5b.gif",
+    "static/media/Nunito-Regular.ttf": "/static/media/Nunito-Regular.9d7a6e03c6e3ed49c7ac.ttf",
+    "static/media/PaytoneOne-Regular.ttf": "/static/media/PaytoneOne-Regular.49f0dd262b027f64630e.ttf",
+    "static/media/catdance.gif": "/static/media/catdance.eaf45f43a290004625cb.gif",
+    "static/media/background.jpg": "/static/media/background.0d22cd06a91465fd1f2c.jpg",
+    "static/media/jar.png": "/static/media/jar.14aff1b42d15db690797.png",
+    "static/media/doge.gif": "/static/media/doge.aee320caa2e3ce264933.gif",
+    "static/media/dollar.png": "/static/media/dollar.79615780476ca8ba2807.png",
     "index.html": "/index.html",
-    "precache-manifest.e3c224e451d02abe442c86bca272ea0e.js": "/precache-manifest.e3c224e451d02abe442c86bca272ea0e.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.ac174bd7.chunk.css.map": "/static/css/main.ac174bd7.chunk.css.map",
-    "static/media/realtime_worth_jar.module.css": "/static/media/background.ff55f882.jpg",
-    "static/media/catdance.gif": "/static/media/catdance.249175df.gif",
-    "static/media/catvibe.gif": "/static/media/catvibe.6f560891.gif",
-    "static/media/doge.gif": "/static/media/doge.28272775.gif",
-    "static/media/dollar.png": "/static/media/dollar.c24c33ec.png",
-    "static/media/jar.png": "/static/media/jar.9c2536b4.png",
-    "static/media/powell.gif": "/static/media/powell.cc2e2c15.gif"
-  }
+    "main.28b13e28.css.map": "/static/css/main.28b13e28.css.map",
+    "main.c21837c2.js.map": "/static/js/main.c21837c2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.28b13e28.css",
+    "static/js/main.c21837c2.js"
+  ]
 }
