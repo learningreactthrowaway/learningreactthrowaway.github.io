@@ -158,7 +158,6 @@
 
 .topRow {
 	font-size: 28px;
-	/* display: flex; */
 	color: var(--text-color);
 	position: absolute;
 	z-index: 1;
@@ -169,6 +168,19 @@
 
 .topRowContent {
 	padding: 8px 16px;
+}
+
+.topRowTime {
+	display: flex;
+}
+
+.addTimeButton {
+	font-size: 20px;
+	background-color: #e5e8d8;
+	border-radius: 16px;
+	border-color: var(--text-color);
+	font-family: 'Nunito', sans-serif;
+	margin-left: auto;
 }
 
 @keyframes affirmationAnimation {

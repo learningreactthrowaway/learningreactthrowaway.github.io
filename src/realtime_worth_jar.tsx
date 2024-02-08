@@ -195,47 +195,50 @@ function Simulation({
     pennyOffset: 0,
   });
 
-  const millisPerFrame = currentTime - prevTimeRef.current;
+  function addMoneyByTimeChange(
+    deltaMillis: number,
+    allowPennyMode: boolean = true
+  ) {
+    const prevMoneyCount = moneyCountRef.current;
+    moneyCountRef.current += dollarsPerMillis * deltaMillis;
+    // Update money count.
+    if (allowPennyMode && pennyModeRef.current.enabled) {
+      const pennyCount =
+        Math.floor(moneyCountRef.current * 100) -
+        Math.floor(prevMoneyCount * 100);
+      for (let i = 0; i < pennyCount; i++) {
+        moneyDataListRef.current.push(
+          newPennyData(dimensions.width, moneyMountTopRef.current)
+        );
+        pennyModeRef.current.pennyOffset =
+          (pennyModeRef.current.pennyOffset + 1) % 100;
+      }
+    } else {
+      const moneyOffsetFromPenny = pennyModeRef.current.pennyOffset * 0.01;
+      const dollarCount =
+        Math.floor(moneyCountRef.current - moneyOffsetFromPenny) -
+        Math.floor(prevMoneyCount - moneyOffsetFromPenny);
+      for (let i = 0; i < dollarCount; i++) {
+        moneyDataListRef.current.push(
+          newDollarData(dimensions.width, moneyMountTopRef.current)
+        );
+      }
+    }
+  }
 
+  const millisPerFrame = currentTime - prevTimeRef.current;
   React.useEffect(() => {
     // Runs once per frame.
     function updateFrame() {
+      addMoneyByTimeChange(millisPerFrame);
       prevTimeRef.current = currentTime;
       setCurrentTime(Date.now());
-
-      // Update money count.
-      if (pennyModeRef.current.enabled) {
-        const prevMoneyCount = moneyCountRef.current;
-        moneyCountRef.current += dollarsPerMillis * millisPerFrame;
-        const pennyCount =
-          Math.floor(moneyCountRef.current * 100) -
-          Math.floor(prevMoneyCount * 100);
-        for (let i = 0; i < pennyCount; i++) {
-          moneyDataListRef.current.push(
-            newPennyData(dimensions.width, moneyMountTopRef.current)
-          );
-          pennyModeRef.current.pennyOffset =
-            (pennyModeRef.current.pennyOffset + 1) % 100;
-        }
-      } else {
-        const prevMoneyCount = moneyCountRef.current;
-        moneyCountRef.current += dollarsPerMillis * millisPerFrame;
-        const moneyOffsetFromPenny = pennyModeRef.current.pennyOffset * 0.01;
-        if (
-          Math.floor(prevMoneyCount - moneyOffsetFromPenny) !==
-          Math.floor(moneyCountRef.current - moneyOffsetFromPenny)
-        ) {
-          moneyDataListRef.current.push(
-            newDollarData(dimensions.width, moneyMountTopRef.current)
-          );
-        }
-      }
     }
     const intervalId = setInterval(() => updateFrame(), targetMillisPerFrame);
     return () => {
       clearInterval(intervalId);
     };
-  }, [currentTime, dollarsPerMillis, dimensions.width, millisPerFrame]);
+  }, [currentTime, millisPerFrame]);
 
   function maybeUpdatePennyMode() {
     if (pennyModeRef.current.timer.isOffCooldown()) {
@@ -249,6 +252,12 @@ function Simulation({
         pennyModeRef.current.timer.newCooldownTimeAndReset(15 * 1000);
       }
     }
+  }
+
+  function addOneMinute() {
+    const diffTime = 60 * 1000; // 1 minute.
+    simlationStartTimeRef.current -= diffTime;
+    addMoneyByTimeChange(diffTime, false);
   }
 
   function maybeMergeLandedMoneyOntoCanvas() {
@@ -317,6 +326,7 @@ function Simulation({
             totalSecondsPassed={
               (currentTime - simlationStartTimeRef.current) / 1000
             }
+            addOneMinute={addOneMinute}
           />
           <div>Worth: ${moneyCountRef.current.toFixed(2)}</div>
         </div>
@@ -344,16 +354,27 @@ function toTwoDigitsString(n: number) {
   return String(n);
 }
 
-function TimeDisplay({ totalSecondsPassed }: { totalSecondsPassed: number }) {
+function TimeDisplay({
+  totalSecondsPassed,
+  addOneMinute,
+}: {
+  totalSecondsPassed: number;
+  addOneMinute: Function;
+}) {
   const hours = Math.floor(totalSecondsPassed / (60 * 60));
   const minutes = Math.floor((totalSecondsPassed / 60) % 60);
   const seconds = Math.floor(totalSecondsPassed % 60);
 
   return (
-    <div>
-      Time worked: {hours > 0 && hours + ':'}
-      {toTwoDigitsString(minutes) + ':'}
-      {toTwoDigitsString(seconds)}
+    <div className={styles.topRowTime}>
+      <span>
+        Time worked: {hours > 0 && hours + ':'}
+        {toTwoDigitsString(minutes) + ':'}
+        {toTwoDigitsString(seconds)}
+      </span>
+      <button className={styles.addTimeButton} onClick={() => addOneMinute()}>
+        +1 min
+      </button>
     </div>
   );
 }
